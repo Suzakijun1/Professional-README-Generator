@@ -8,12 +8,27 @@ const questions = [
     type: "input",
     message: "What is the title of the project?",
     name: "title",
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log("please enter your repository title.");
+        return false;
+      }
+    },
   },
   {
     type: "input",
     message:
       "Provide a short description explaining the what, why, and how of your project.",
     name: "description",
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log("Please enter your description.");
+      }
+    },
   },
   {
     type: "",
