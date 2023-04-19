@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { generate } = require("rxjs");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -98,8 +99,21 @@ function writeToFile(fileName, data) {
   });
 }
 
+const createReadMe = util.promisify(writeToFile);
 // TODO: Create a function to initialize app
-function init() {}
+async function init() {
+  try {
+    const userAnswers = await inquirer.prompt(questions);
+    console.log("The data is being processed", userAnswers);
+
+    const currentMarkdown = generateMarkdown(userAnswers);
+    console.log(currentMarkdown);
+
+    await createReadMe("newREADME.md", currentMarkdown);
+  } catch (error) {
+    console.log("There was an error:" + error);
+  }
+}
 
 // Function call to initialize app
 init();
