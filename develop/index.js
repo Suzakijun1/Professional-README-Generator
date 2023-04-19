@@ -84,9 +84,18 @@ const questions = [
     name: "credit",
   },
   {
-    type: "",
-    message: "",
-    name: "",
+    type: "checkbox",
+    message: "Please choose a license.",
+    name: "license",
+    choices: ["Apache", "MIT", "BSD", "Unlicense"],
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log("You must choose a license.");
+        return false;
+      }
+    },
   },
 ];
 
