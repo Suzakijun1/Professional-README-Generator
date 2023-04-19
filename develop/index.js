@@ -48,6 +48,41 @@ const questions = [
     },
   },
   {
+    type: "input",
+    message: "What is your GitHub username?",
+    name: "githubUser",
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log("Please enter your GitHub username.");
+        return false;
+      }
+    },
+  },
+  {
+    type: "input",
+    message: "What is your email?",
+    name: "emailInput",
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log("Please enter your email.");
+      }
+    },
+  },
+  {
+    type: "input",
+    message: "Provide instructions on how to use your project",
+    name: "usage",
+  },
+  {
+    type: "input",
+    message: "List your collaborators, if any.",
+    name: "credit",
+  },
+  {
     type: "",
     message: "",
     name: "",
