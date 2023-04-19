@@ -31,6 +31,23 @@ const questions = [
     },
   },
   {
+    type: "confirm",
+    message: "Is there an installation process?",
+    name: "confirmInstallation",
+  },
+  {
+    type: "input",
+    message: "What are the steps required to install your project?",
+    name: "installation",
+    when: ({ confirmInstallation }) => {
+      if (confirmInstallation) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+  {
     type: "",
     message: "",
     name: "",
@@ -38,7 +55,13 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (error) => {
+    if (error) {
+      return console.log("There was an error:" + error);
+    }
+  });
+}
 
 // TODO: Create a function to initialize app
 function init() {}
