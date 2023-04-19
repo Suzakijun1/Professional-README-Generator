@@ -1,16 +1,19 @@
 // TODO: Include packages needed for this application
+const inquirer = require("inquirer");
+const fs = require("fs");
 
 // TODO: Create an array of questions for user input
 const questions = [
   {
-    type: "",
-    message: "",
-    name: "",
+    type: "input",
+    message: "What is the title of the project?",
+    name: "title",
   },
   {
-    type: "",
-    message: "",
-    name: "",
+    type: "input",
+    message:
+      "Provide a short description explaining the what, why, and how of your project.",
+    name: "description",
   },
   {
     type: "",
