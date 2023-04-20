@@ -1,8 +1,9 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const { generate } = require("rxjs");
+const util = require("util");
 
+const generateMarkdown = require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -114,6 +115,8 @@ async function init() {
   try {
     const userAnswers = await inquirer.prompt(questions);
     console.log("The data is being processed", userAnswers);
+
+    // userAnswers.license
 
     const currentMarkdown = generateMarkdown(userAnswers);
     console.log(currentMarkdown);
