@@ -1,9 +1,10 @@
 // TODO: Include packages needed for this application
-const inquirer = require("inquirer");
+const inquirer = require("./utils/node_modules/inquirer");
 const fs = require("fs");
 const util = require("util");
 
 const generateMarkdown = require("./utils/generateMarkdown");
+const renderLicenseSection = require("./utils/renderLicense");
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -120,6 +121,9 @@ async function init() {
 
     const currentMarkdown = generateMarkdown(userAnswers);
     console.log(currentMarkdown);
+    userAnswers.renderLicenseSection = renderLicenseSection(
+      userAnswers.license
+    );
 
     await createReadMe("newREADME.md", currentMarkdown);
   } catch (error) {
