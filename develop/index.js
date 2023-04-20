@@ -4,7 +4,8 @@ const fs = require("fs");
 const util = require("util");
 
 const generateMarkdown = require("./utils/generateMarkdown");
-const renderLicenseSection = require("./utils/renderLicense");
+const renderLicenseSection =
+  require("./utils/renderLicense").renderLicenseBadge;
 // TODO: Create an array of questions for user input
 const questions = [
   {
