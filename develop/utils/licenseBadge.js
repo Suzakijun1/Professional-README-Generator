@@ -1,4 +1,4 @@
-function renderLicenseBadge(license) {
+function licenseBadge(value) {
   if (value === "Apache") {
     return "[![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
   } else if (value === "MIT") {
@@ -11,5 +11,5 @@ function renderLicenseBadge(license) {
 }
 
 module.exports = {
-  renderLicenseBadge: renderLicenseBadge,
+  licenseBadge: licenseBadge,
 };

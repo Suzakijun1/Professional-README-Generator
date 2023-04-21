@@ -4,8 +4,7 @@ const fs = require("fs");
 const util = require("util");
 
 const generateMarkdown = require("./utils/generateMarkdown");
-const renderLicenseSection =
-  require("./utils/renderLicense").renderLicenseBadge;
+const licenseBadge = require("./utils/licenseBadge").licenseBadge;
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -91,14 +90,14 @@ const questions = [
     message: "Please choose a license.",
     name: "license",
     choices: ["Apache", "MIT", "BSD", "Unlicense"],
-    validate: (nameInput) => {
-      if (nameInput) {
-        return true;
-      } else {
-        console.log("You must choose a license.");
-        return false;
-      }
-    },
+    // validate: (nameInput) => {
+    //   if (nameInput) {
+    //     return true;
+    //   } else {
+    //     console.log("You must choose a license.");
+    //     return false;
+    //   }
+    // },
   },
 ];
 
@@ -118,13 +117,9 @@ async function init() {
     const userAnswers = await inquirer.prompt(questions);
     console.log("The data is being processed", userAnswers);
 
-    // userAnswers.license
-
-    const currentMarkdown = generateMarkdown(userAnswers);
+    userAnswers.licenseBadge = licenseBadge(userAnswers.license);
+    let currentMarkdown = generateMarkdown(userAnswers);
     console.log(currentMarkdown);
-    userAnswers.renderLicenseSection = renderLicenseSection(
-      userAnswers.license
-    );
 
     await createReadMe("newREADME.md", currentMarkdown);
   } catch (error) {

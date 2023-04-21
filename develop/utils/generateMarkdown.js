@@ -33,19 +33,20 @@ function generateMarkdown(data) {
   ## Description
   ${data.description}
 
-  ##Installation
+  ## Installation
   ${data.installation}
 
-  ##Usage
+  ## Usage
   ${data.usage}
 
-  #Credits
+  ## Credits
   ${data.credit}
 
-  ##License
+  ## License
   License used for this project - ${data.license}
+  ${data.licenseBadge}
 
-  ##Contact Information
+  ## Contact Information
   GitHub Username: ${data.githubUser}
   email: ${data.emailInput}
 `;
